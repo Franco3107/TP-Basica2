@@ -4,7 +4,6 @@ public abstract class Producto {
 	private Integer codigo;
 	private String nombre;
 	private Integer cantidadDeStock;
-	private Boolean stockDisponible;
 	
 	
 	
@@ -12,11 +11,19 @@ public Producto(Integer codigo, String nombre,  Integer cantidadDeStock) {
 		this.codigo = codigo;
 		this.nombre = nombre;
 		this.cantidadDeStock = cantidadDeStock;
-		this.stockDisponible = true;
-	}
+		}
+
+public void agregarStock() {
+	this.cantidadDeStock++;
+}
+public void quitarStock() {
+	this.cantidadDeStock--;
+}
+public Boolean hayStock() {
+	return cantidadDeStock >0;
+}
 
 // GETTER AND SETTER
-
 
 }
 
