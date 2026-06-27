@@ -1,14 +1,16 @@
 package ar.edu.unlam.dominio;
 
+import ar.edu.unlam.enums.TipoElectronico;
+
 public class Electronico extends Producto{
-	private String marca;
+	private TipoElectronico tipoElectronico;
 	private String modelo;
 	private Integer garantiaMeses;
 	
-	public Electronico(Integer codigo, String nombre, String categoria, Integer cantidadDeStock, String marca,
+	public Electronico(String marca,Integer cantidadDeStock, TipoElectronico tipoElectronico,
 			String modelo, Integer garantiaMeses) {
-		super(codigo, nombre, cantidadDeStock);
-		this.marca = marca;
+		super(marca, cantidadDeStock);
+		this.tipoElectronico= tipoElectronico;
 		this.modelo = modelo;
 		this.garantiaMeses = garantiaMeses;
 	}
