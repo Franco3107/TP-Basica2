@@ -1,8 +1,9 @@
 package ar.edu.unlam.dominio;
 
 import ar.edu.unlam.enums.TipoRopa;
+import ar.edu.unlam.interfaces.Descontable;
 
-public class Ropa extends Producto {
+public class Ropa extends Producto implements Descontable {
 	private String color;
 	private String Material;
 	private Integer talle;
@@ -15,6 +16,12 @@ public class Ropa extends Producto {
 		Material = material;
 		this.talle = talle;
 		this.tipoRopa = tipoRopa;
+	}
+
+	@Override
+	public Double aplicarDescuento() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 	

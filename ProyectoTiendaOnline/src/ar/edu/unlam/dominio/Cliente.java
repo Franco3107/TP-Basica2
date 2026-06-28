@@ -3,13 +3,13 @@ package ar.edu.unlam.dominio;
 public class Cliente {
 	private Integer codigoCliente;
 	private String nombre;
-	private String direccion;
+	private Double dinero;
 	private CarritoDeCompras carrito;
 	
-	public Cliente(Integer codigoCliente, String nombre, String direccion, CarritoDeCompras carrito) {
+	public Cliente(Integer codigoCliente, String nombre, Double dinero, CarritoDeCompras carrito) {
 		this.codigoCliente = codigoCliente;
 		this.nombre = nombre;
-		this.direccion = direccion;
+		this.dinero = dinero;
 		this.carrito = carrito;
 	}
 	

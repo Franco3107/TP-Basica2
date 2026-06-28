@@ -3,8 +3,9 @@ package ar.edu.unlam.dominio;
 import java.time.LocalDate;
 
 import ar.edu.unlam.enums.TipoAlimento;
+import ar.edu.unlam.interfaces.Caducable;
 
-public class Alimento extends Producto {
+public class Alimento extends Producto implements Caducable{
 	private TipoAlimento tipoAlimento;
 	private LocalDate fechaDeVencimiento;
 	private Boolean estaVencido;
@@ -22,6 +23,12 @@ public class Alimento extends Producto {
 	public String toString() {
 		return "Alimento [fechaDeVencimiento=" + fechaDeVencimiento + ", estaVencido=" + estaVencido + ", peso=" + peso
 				+ "]";
+	}
+
+	@Override
+	public Boolean estaVencido() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	
