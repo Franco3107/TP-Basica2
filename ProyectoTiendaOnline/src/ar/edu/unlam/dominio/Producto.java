@@ -1,6 +1,8 @@
 package ar.edu.unlam.dominio;
 
-public abstract class Producto {
+import java.util.Objects;
+
+public abstract class Producto implements Comparable<Producto> {
 	private static Integer CONTADOR_CODIGO =0;  // Se comparte entre todos los productos creados
 	
 	private Integer codigo; // CODIGO INDIVIDUAL DE CADA PRODUCTO
@@ -32,6 +34,31 @@ public Boolean hayStock() {
 @Override
 public String toString() {
 	return "Producto [codigo=" + codigo + ", nombre=" + marca + ", cantidadDeStock=" + cantidadDeStock + "]";
+}
+// HASH CODE Y EQUALS
+
+@Override
+public int hashCode() {
+	return Objects.hash(codigo);
+}
+
+@Override
+public boolean equals(Object obj) {
+	if (this == obj)
+		return true;
+	if (obj == null)
+		return false;
+	if (getClass() != obj.getClass())
+		return false;
+	Producto other = (Producto) obj;
+	return Objects.equals(codigo, other.codigo);
+}
+
+
+// COMPARATE T0
+@Override
+public int compareTo(Producto otro) {
+    return this.codigo.compareTo(otro.codigo);
 }
 
 

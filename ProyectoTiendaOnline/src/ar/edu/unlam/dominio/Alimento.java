@@ -19,11 +19,15 @@ public class Alimento extends Producto implements Caducable{
 		this.peso = peso;
 	}
 
+	
+
 	@Override
 	public String toString() {
-		return "Alimento [fechaDeVencimiento=" + fechaDeVencimiento + ", estaVencido=" + estaVencido + ", peso=" + peso
-				+ "]";
+		return "Alimento [tipoAlimento=" + tipoAlimento + ", fechaDeVencimiento=" + fechaDeVencimiento
+				+ ", estaVencido=" + estaVencido + ", peso=" + peso + "]";
 	}
+
+
 
 	@Override
 	public Boolean estaVencido() {

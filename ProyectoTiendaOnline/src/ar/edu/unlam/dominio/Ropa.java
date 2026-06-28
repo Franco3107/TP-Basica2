@@ -13,7 +13,7 @@ public class Ropa extends Producto implements Descontable {
 			Integer talle, TipoRopa tipoRopa) {
 		super(marca, cantidadDeStock);
 		this.color = color;
-		Material = material;
+		this.Material = material;
 		this.talle = talle;
 		this.tipoRopa = tipoRopa;
 	}
@@ -22,6 +22,12 @@ public class Ropa extends Producto implements Descontable {
 	public Double aplicarDescuento() {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public int compareTo(Producto o) {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 	
 	
