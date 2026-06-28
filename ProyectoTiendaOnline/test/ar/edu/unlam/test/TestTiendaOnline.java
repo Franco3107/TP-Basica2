@@ -113,6 +113,10 @@ public class TestTiendaOnline {
 	public void dadoQueExisteUnaTiendaVerificarCantidadDeClientes() {
 		
 	}
+	@Test
+	public void dadoQueExisteUnaTiendaAplicarElDescuentoCorrespondienteALaRopa() {
+		
+	}
 	@Test (expected = ProductoNoEncontradoException.class)
 	public void dadoQueExisteUnaTiendaBuscarUnProductoInexistenteYLanzarUnaExcepcion() {
 		
