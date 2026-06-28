@@ -15,6 +15,8 @@ import ar.edu.unlam.enums.TipoElectronico;
 import ar.edu.unlam.enums.TipoRopa;
 import ar.edu.unlam.excepciones.CarritoSinProductosException;
 import ar.edu.unlam.excepciones.ProductoNoEncontradoException;
+import ar.edu.unlam.excepciones.SaldoInsuficienteException;
+import ar.edu.unlam.excepciones.StockInsuficienteException;
 
 public class TestTiendaOnline {
 
@@ -37,12 +39,22 @@ public class TestTiendaOnline {
 		
 		assertNotNull(e1);
 	}
+	@Test 
+	public void dadoQueExisteUnProductoAgregarStock() {
+		
+	}
+	@Test
+	public void dadoQueExisteUnAlimentoComprobarQueEstaVencido() {
+		
+	}
 	
 	
 	// CLIENTE
+	@Test
 	public void crearClienteCorrectamente() {
 		
 	}
+	@Test
 	public void DadoQueExisteUnClienteAsignarleUnCarritoCorrectamente() {
 		
 	}
@@ -58,6 +70,13 @@ public class TestTiendaOnline {
 	}
 	@Test (expected = CarritoSinProductosException.class)
 	public void eliminarProductoDelCarritoYQueTireUnaExcepcionDeCarritoVacio() {
+		
+	}
+	@Test
+	public void dadoQueExisteUnCarritoCalcularElPrecioTotal() {
+		
+	}
+	public void dadoQueExisteUnCarritoDevolverLosProductoQueEstenDentro() {
 		
 	}
 	
@@ -82,7 +101,30 @@ public class TestTiendaOnline {
 	public void dadoQueExisteUnaTiendaBuscarUnProductoPorSuIdYQueLanceUnaExcepcion() {
 		
 	}
-	
+	@Test
+	public void dadoQueExisteUnaTiendaObtenerElCatalogoCompleto() {
+		
+	}
+	@Test
+	public void dadoQueExisteUnaTiendaRealizarUnaCompraCorrectamente() {
+		
+	}
+	@Test
+	public void dadoQueExisteUnaTiendaVerificarCantidadDeClientes() {
+		
+	}
+	@Test (expected = ProductoNoEncontradoException.class)
+	public void dadoQueExisteUnaTiendaBuscarUnProductoInexistenteYLanzarUnaExcepcion() {
+		
+	}
+	@Test (expected = StockInsuficienteException.class)
+	public void dadoQueExisteUnaTiendaComprarUnProductoSinStockYLanzarExcepcion() {
+		
+	}
+	@Test (expected = SaldoInsuficienteException.class) 
+	public void dadoQueExisteUnaTiendaYUnClienteRealizarUnaCompraConDineroInsuficienteYLanzarUnaException() {
+		
+	}
 	
 	
 	
