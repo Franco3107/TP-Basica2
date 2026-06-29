@@ -11,8 +11,8 @@ public class Alimento extends Producto implements Caducable{
 	private Boolean estaVencido;
 	private Integer peso;
 	
-	public Alimento(String marca, Integer cantidadDeStock, TipoAlimento tipoAlimento, LocalDate fechaDeVencimiento, Integer peso) {
-		super(marca, cantidadDeStock);
+	public Alimento(String marca, Integer cantidadDeStock, Double precio, TipoAlimento tipoAlimento, LocalDate fechaDeVencimiento, Integer peso) {
+		super(marca, cantidadDeStock, precio);
 		this.tipoAlimento = tipoAlimento;
 		this.fechaDeVencimiento = fechaDeVencimiento;
 		this.estaVencido = false;

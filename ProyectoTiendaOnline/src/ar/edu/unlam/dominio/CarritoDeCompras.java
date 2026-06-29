@@ -1,16 +1,18 @@
 package ar.edu.unlam.dominio;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Map;
 
 public class CarritoDeCompras {
-	private static Integer CONTADOR_ID_CARRITO =0;
+	private static Integer contadorCarrito =0;
 	
 	private Integer IdCarrito;
 	private Map<Producto, Integer> productos;  //GUARDA EL PRODUCTO COMO CLAVE Y LA CANTIDAD COMO VALOR
 
-	public CarritoDeCompras(Map<Producto, Integer> productos) {
-		this.IdCarrito = ++CONTADOR_ID_CARRITO;
-		this.productos = productos;
+	public CarritoDeCompras() {
+		this.IdCarrito = ++contadorCarrito;
+		this.productos = new HashMap<>();
 	}
 	
 	public void agregarProducto() {
@@ -26,6 +28,8 @@ public class CarritoDeCompras {
 		
 	}
 	
-	
+	public ArrayList<Producto> obtenerProductos() {
+	    return null;
+	}
 	
 }

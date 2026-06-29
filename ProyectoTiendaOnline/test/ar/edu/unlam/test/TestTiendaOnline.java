@@ -23,19 +23,19 @@ public class TestTiendaOnline {
 	// PRODUCTOS
 	@Test
 	public void crearUnAlimentoCorrectamente() {
-		Alimento a1 = new Alimento("Marca", 10, TipoAlimento.ARROZ, LocalDate.of(2026, 10, 10), 2);
+		Alimento a1 = new Alimento("Marca", 10, 100.0, TipoAlimento.ARROZ, LocalDate.of(2026, 10, 10), 2);
 		 
 		assertNotNull(a1);
 	}
 	@Test
 	public void crearRopaCorrectamente() {
-		Ropa r1 = new Ropa("Marca", 4, "ROJO","ALGOHODON" , 12, TipoRopa.BUZO);
+		Ropa r1 = new Ropa("Marca", 4, 500.0, "ROJO","ALGOHODON" , 12, TipoRopa.BUZO);
 		
 		assertNotNull(r1);
 	}
 	@Test
 	public void crearUnElectronicoCorrectamente() {
-		Electronico e1 = new Electronico("Fravega",10,TipoElectronico.AIRE_ACONDICIONADO, "A348F",12);
+		Electronico e1 = new Electronico("Fravega",10, 5000.0,TipoElectronico.AIRE_ACONDICIONADO, "A348F",12);
 		
 		assertNotNull(e1);
 	}
@@ -45,6 +45,11 @@ public class TestTiendaOnline {
 	}
 	@Test
 	public void dadoQueExisteUnAlimentoComprobarQueEstaVencido() {
+		
+	}
+	
+	@Test
+	public void dadoQueExisteUnProductoEliminarloDelCatalogo() {
 		
 	}
 	
@@ -76,15 +81,11 @@ public class TestTiendaOnline {
 	public void dadoQueExisteUnCarritoCalcularElPrecioTotal() {
 		
 	}
-	public void dadoQueExisteUnCarritoDevolverLosProductoQueEstenDentro() {
+	public void dadoQueExisteUnCarritoObtenerLosProductoQueEstenDentro() {
 		
 	}
 	
 	// TIENDA ONLINE
-	@Test 
-	public void crearUnaTiendaCorrectamente() {
-		
-	}
 	@Test
 	public void dadoQueExisteUnaTiendaAgregarUnCliente() {
 		
@@ -98,15 +99,20 @@ public class TestTiendaOnline {
 		
 	}
 	@Test
-	public void dadoQueExisteUnaTiendaBuscarUnProductoPorSuIDCorrectamente() {
+	public void dadoQueExisteUnaTiendaBuscarUnProductoPorSuCodigoCorrectamente() {
 		
 	}
 	@Test
 	public void dadoQueExistenUnaTiendaObtenerProductosOrdenadosPorMarcaAscendente() {
 		
+	}	
+	@Test
+	public void dadoQueExistenUnaTiendaObtenerProductosOrdenadosPorPrecioUnitarioDescendente() {
+
 	}
+
 	@Test (expected = ProductoNoEncontradoException.class)
-	public void dadoQueExisteUnaTiendaBuscarUnProductoPorSuIdYQueLanceUnaExcepcion() {
+	public void dadoQueExisteUnaTiendaBuscarUnProductoPorSuCodigoYQueLanceUnaExcepcion() {
 		
 	}
 	@Test
@@ -123,10 +129,6 @@ public class TestTiendaOnline {
 	}
 	@Test
 	public void dadoQueExisteUnaTiendaAplicarElDescuentoCorrespondienteALaRopa() {
-		
-	}
-	@Test (expected = ProductoNoEncontradoException.class)
-	public void dadoQueExisteUnaTiendaBuscarUnProductoInexistenteYLanzarUnaExcepcion() {
 		
 	}
 	@Test (expected = StockInsuficienteException.class)
