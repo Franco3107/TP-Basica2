@@ -3,13 +3,17 @@ package ar.edu.unlam.test;
 import static org.junit.Assert.*;
 
 import java.time.LocalDate;
+import java.util.TreeSet;
 
 import org.junit.Test;
 
 import ar.edu.unlam.dominio.Alimento;
+import ar.edu.unlam.dominio.CarritoDeCompras;
+import ar.edu.unlam.dominio.Cliente;
 import ar.edu.unlam.dominio.Electronico;
 import ar.edu.unlam.dominio.Producto;
 import ar.edu.unlam.dominio.Ropa;
+import ar.edu.unlam.dominio.SistemaTiendaOnline;
 import ar.edu.unlam.enums.TipoAlimento;
 import ar.edu.unlam.enums.TipoElectronico;
 import ar.edu.unlam.enums.TipoRopa;
@@ -49,7 +53,20 @@ public class TestTiendaOnline {
 	}
 	
 	@Test
-	public void dadoQueExisteUnProductoEliminarloDelCatalogo() {
+	public void dadoQueExisteUnProductoEliminarloDelCatalogo() throws ProductoNoEncontradoException {
+		SistemaTiendaOnline sistema = new SistemaTiendaOnline();
+		Producto productoE = new Electronico("Samsung", 5, 700.0, TipoElectronico.TELEVISOR, "Smart TV", 12);
+		
+		sistema.agregarProducto(productoE);
+		
+		TreeSet<Producto> productos = sistema.obtenerCatalogoCompleto();
+		
+		assertEquals(1, productos.size());
+		
+		sistema.eliminarProducto(productoE.getCodigo());
+		
+		productos = sistema.obtenerCatalogoCompleto();
+		assertEquals(0, productos.size());
 		
 	}
 	
@@ -88,19 +105,67 @@ public class TestTiendaOnline {
 	// TIENDA ONLINE
 	@Test
 	public void dadoQueExisteUnaTiendaAgregarUnCliente() {
+		SistemaTiendaOnline sistema = new SistemaTiendaOnline();
+		CarritoDeCompras carrito = new CarritoDeCompras();
+		Cliente cliente = new Cliente(1, "Pepe", 10000.0, carrito);
 		
+		sistema.agregarCliente(cliente);
+		
+		assertEquals("Pepe", sistema.buscarClientePorCodigo(1).getNombre());
 	}
 	@Test
 	public void dadoQueExistenClientesObtenerlosOrdenadosPorNombreAscendente() {
+		SistemaTiendaOnline sistema = new SistemaTiendaOnline();
+		Cliente cliente = new Cliente(1, "Pepe", 10000.0, null);
+		Cliente cliente2 = new Cliente(2, "Alan", 10000.0, null);
+		Cliente cliente3 = new Cliente(3, "Roman", 10000.0, null);
+		Cliente cliente4 = new Cliente(4, "Pepe", 10000.0, null);
+		Cliente cliente5 = new Cliente(5, "Jose", 10000.0, null);
 		
+		sistema.agregarCliente(cliente);
+		sistema.agregarCliente(cliente2);
+		sistema.agregarCliente(cliente3);
+		sistema.agregarCliente(cliente4);
+		sistema.agregarCliente(cliente5);
+		
+		TreeSet<Cliente> clientesOrdenadosPorNombreAsc = sistema.obtenerClientesPorNombreAscendente();
+		
+		int i = 0;
+
+		for(Cliente c : clientesOrdenadosPorNombreAsc) {
+			switch(i) {
+				case 0:
+					assertEquals("Alan", c.getNombre());
+					break;
+				case 1:
+					assertEquals("Jose", c.getNombre());
+					break;
+				case 2:
+					assertEquals("Pepe", c.getNombre());
+					break;
+				case 3:
+					assertEquals("Pepe", c.getNombre());
+					break;
+				case 4:
+					assertEquals("Roman", c.getNombre());
+					break;
+			}
+			i++;
+		}
 	}
 	@Test 
 	public void dadoQueExisteUnaTiendaAgregarUnProducto() {
 		
 	}
 	@Test
-	public void dadoQueExisteUnaTiendaBuscarUnProductoPorSuCodigoCorrectamente() {
+	public void dadoQueExisteUnaTiendaBuscarUnProductoPorSuCodigoCorrectamente() throws ProductoNoEncontradoException {
+		SistemaTiendaOnline sistema = new SistemaTiendaOnline();
+		Producto productoA = new Alimento("Matarazzo", 50, 75.0, TipoAlimento.PASTA, LocalDate.of(2028, 04, 18), 500);
 		
+		sistema.agregarProducto(productoA);
+		
+		Producto productoBuscado = sistema.buscarProductoPorCodigo(productoA.getCodigo());
+		assertEquals(productoA, productoBuscado);
 	}
 	@Test
 	public void dadoQueExistenUnaTiendaObtenerProductosOrdenadosPorMarcaAscendente() {
@@ -112,8 +177,14 @@ public class TestTiendaOnline {
 	}
 
 	@Test (expected = ProductoNoEncontradoException.class)
-	public void dadoQueExisteUnaTiendaBuscarUnProductoPorSuCodigoYQueLanceUnaExcepcion() {
+	public void dadoQueExisteUnaTiendaBuscarUnProductoPorSuCodigoYQueLanceUnaExcepcion() throws ProductoNoEncontradoException  {
+		SistemaTiendaOnline sistema = new SistemaTiendaOnline();
+		Producto productoR = new Ropa("Levis", 6, 200.0, "AZUL","LANA" , 14, TipoRopa.REMERA);
 		
+		sistema.agregarProducto(productoR);
+		
+		Producto productoBuscado = sistema.buscarProductoPorCodigo(3);
+		assertEquals(productoR, productoBuscado);
 	}
 	@Test
 	public void dadoQueExisteUnaTiendaObtenerElCatalogoCompleto() {

@@ -62,4 +62,9 @@ public abstract class Producto implements Comparable<Producto> {
 		return this.codigo.compareTo(otro.codigo);
 	}
 
+	public Integer getCodigo() {
+		// TODO Auto-generated method stub
+		return this.codigo;
+	}
+
 }
