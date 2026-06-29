@@ -90,7 +90,6 @@ public class TestTiendaOnline {
 	public void dadoQueExisteUnaTiendaAgregarUnCliente() {
 		
 	}
-	
 	@Test
 	public void dadoQueExistenClientesObtenerlosOrdenadosPorNombreAscendente() {
 		
@@ -103,16 +102,15 @@ public class TestTiendaOnline {
 	public void dadoQueExisteUnaTiendaBuscarUnProductoPorSuCodigoCorrectamente() {
 		
 	}
-	
 	@Test
 	public void dadoQueExistenUnaTiendaObtenerProductosOrdenadosPorMarcaAscendente() {
 		
-	}
-	
+	}	
 	@Test
 	public void dadoQueExistenUnaTiendaObtenerProductosOrdenadosPorPrecioUnitarioDescendente() {
 
 	}
+
 	@Test (expected = ProductoNoEncontradoException.class)
 	public void dadoQueExisteUnaTiendaBuscarUnProductoPorSuCodigoYQueLanceUnaExcepcion() {
 		
