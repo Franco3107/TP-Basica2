@@ -1,5 +1,6 @@
 package ar.edu.unlam.dominio;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -27,6 +28,8 @@ public class CarritoDeCompras {
 		
 	}
 	
-	
+	public ArrayList<Producto> obtenerProductos() {
+	    return null;
+	}
 	
 }

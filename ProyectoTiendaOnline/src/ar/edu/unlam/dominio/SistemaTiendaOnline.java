@@ -16,4 +16,42 @@ public class SistemaTiendaOnline {
 	    this.catalogo = new TreeSet<>();
 	}
 	
+	public void agregarProducto(Producto producto) {
+		
+	}
+	
+	public void eliminarProducto(Integer codigo) {
+		
+	}
+	
+	public Producto buscarProductoPorCodigo(Integer codigo) {
+		return null;
+	}
+	
+	public void agregarCliente(Cliente cliente) {
+		
+	}
+	
+	public void realizarCompra() {
+		
+	}
+	
+	public TreeSet<Cliente> obtenerClientesPorNombreAscendente(){
+		return null;
+	}
+	
+	public TreeSet<Producto> obtenerProductosOrdenadosPorMarcaAscendente() {
+		return null;
+	
+	}
+	
+	public TreeSet<Producto> obtenerProductosOrdenadosPorPrecioUnitarioDescendente() {
+		return null;
+	
+	}
+	
+	public TreeSet<Producto> obtenerCatalogoCompleto(){
+		return null;
+	}
+	
 }

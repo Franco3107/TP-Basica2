@@ -81,18 +81,8 @@ public class TestTiendaOnline {
 	public void dadoQueExisteUnCarritoCalcularElPrecioTotal() {
 		
 	}
-	public void dadoQueExisteUnCarritoDevolverLosProductoQueEstenDentro() {
+	public void dadoQueExisteUnCarritoObtenerLosProductoQueEstenDentro() {
 		
-	}
-	
-	@Test
-	public void dadoQueExisteUnCarritoObtenerLosProductosOrdenadosPorMarcaAscendente() {
-		
-	}
-	
-	@Test
-	public void dadoQueExisteUnCarritoObtenerLosProductosOrdenadosPorPrecioUnitarioDescendente() {
-
 	}
 	
 	// TIENDA ONLINE
@@ -110,8 +100,18 @@ public class TestTiendaOnline {
 		
 	}
 	@Test
-	public void dadoQueExisteUnaTiendaBuscarUnProductoPorSuIDCorrectamente() {
+	public void dadoQueExisteUnaTiendaBuscarUnProductoPorSuCodigoCorrectamente() {
 		
+	}
+	
+	@Test
+	public void dadoQueExistenUnaTiendaObtenerProductosOrdenadosPorMarcaAscendente() {
+		
+	}
+	
+	@Test
+	public void dadoQueExistenUnaTiendaObtenerProductosOrdenadosPorPrecioUnitarioDescendente() {
+
 	}
 	@Test (expected = ProductoNoEncontradoException.class)
 	public void dadoQueExisteUnaTiendaBuscarUnProductoPorSuCodigoYQueLanceUnaExcepcion() {
