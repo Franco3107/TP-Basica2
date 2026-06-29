@@ -89,12 +89,20 @@ public class TestTiendaOnline {
 	public void dadoQueExisteUnaTiendaAgregarUnCliente() {
 		
 	}
+	@Test
+	public void dadoQueExistenClientesObtenerlosOrdenadosPorNombreAscendente() {
+		
+	}
 	@Test 
 	public void dadoQueExisteUnaTiendaAgregarUnProducto() {
 		
 	}
 	@Test
 	public void dadoQueExisteUnaTiendaBuscarUnProductoPorSuIDCorrectamente() {
+		
+	}
+	@Test
+	public void dadoQueExistenUnaTiendaObtenerProductosOrdenadosPorMarcaAscendente() {
 		
 	}
 	@Test (expected = ProductoNoEncontradoException.class)
