@@ -50,7 +50,11 @@ public class SistemaTiendaOnline {
 	}
 	
 	public TreeSet<Cliente> obtenerClientesPorNombreAscendente(){
-		return null;
+		
+		TreeSet<Cliente> clientesOrdenNombreAsc = new TreeSet<>(new OrdenNombreClienteAsc());
+		clientesOrdenNombreAsc.addAll(clientes.values());
+		
+		return clientesOrdenNombreAsc;
 	}
 	
 	public TreeSet<Producto> obtenerProductosOrdenadosPorMarcaAscendente() {

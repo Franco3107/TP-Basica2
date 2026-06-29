@@ -115,7 +115,43 @@ public class TestTiendaOnline {
 	}
 	@Test
 	public void dadoQueExistenClientesObtenerlosOrdenadosPorNombreAscendente() {
+		SistemaTiendaOnline sistema = new SistemaTiendaOnline();
+		Cliente cliente = new Cliente(1, "Pepe", 10000.0, null);
+		Cliente cliente2 = new Cliente(2, "Alan", 10000.0, null);
+		Cliente cliente3 = new Cliente(3, "Roman", 10000.0, null);
+		Cliente cliente4 = new Cliente(4, "Pepe", 10000.0, null);
+		Cliente cliente5 = new Cliente(5, "Jose", 10000.0, null);
 		
+		sistema.agregarCliente(cliente);
+		sistema.agregarCliente(cliente2);
+		sistema.agregarCliente(cliente3);
+		sistema.agregarCliente(cliente4);
+		sistema.agregarCliente(cliente5);
+		
+		TreeSet<Cliente> clientesOrdenadosPorNombreAsc = sistema.obtenerClientesPorNombreAscendente();
+		
+		int i = 0;
+
+		for(Cliente c : clientesOrdenadosPorNombreAsc) {
+			switch(i) {
+				case 0:
+					assertEquals("Alan", c.getNombre());
+					break;
+				case 1:
+					assertEquals("Jose", c.getNombre());
+					break;
+				case 2:
+					assertEquals("Pepe", c.getNombre());
+					break;
+				case 3:
+					assertEquals("Pepe", c.getNombre());
+					break;
+				case 4:
+					assertEquals("Roman", c.getNombre());
+					break;
+			}
+			i++;
+		}
 	}
 	@Test 
 	public void dadoQueExisteUnaTiendaAgregarUnProducto() {

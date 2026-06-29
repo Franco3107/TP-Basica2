@@ -1,6 +1,6 @@
 package ar.edu.unlam.dominio;
 
-public class Cliente {
+public class Cliente implements Comparable<Cliente>{
 	private Integer codigoCliente;
 	private String nombre;
 	private Double dinero;
@@ -19,5 +19,10 @@ public class Cliente {
 	
 	public String getNombre() {
 		return this.nombre;
+	}
+	
+	@Override
+	public int compareTo(Cliente otro) {
+		return this.codigoCliente.compareTo(otro.codigoCliente);
 	}
 }
