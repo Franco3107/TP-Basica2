@@ -9,9 +9,9 @@ public class Ropa extends Producto implements Descontable {
 	private Integer talle;
 	private TipoRopa tipoRopa;
 	
-	public Ropa(String marca, Integer cantidadDeStock, String color, String material,
+	public Ropa(String marca, Integer cantidadDeStock, Double precio, String color, String material,
 			Integer talle, TipoRopa tipoRopa) {
-		super(marca, cantidadDeStock);
+		super(marca, cantidadDeStock, precio);
 		this.color = color;
 		this.Material = material;
 		this.talle = talle;

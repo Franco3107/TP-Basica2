@@ -8,9 +8,9 @@ public class Electronico extends Producto implements Descontable{
 	private String modelo;
 	private Integer garantiaMeses;
 	
-	public Electronico(String marca,Integer cantidadDeStock, TipoElectronico tipoElectronico,
+	public Electronico(String marca,Integer cantidadDeStock, Double precio, TipoElectronico tipoElectronico,
 			String modelo, Integer garantiaMeses) {
-		super(marca, cantidadDeStock);
+		super(marca, cantidadDeStock, precio);
 		this.tipoElectronico= tipoElectronico;
 		this.modelo = modelo;
 		this.garantiaMeses = garantiaMeses;
