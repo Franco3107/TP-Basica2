@@ -18,6 +18,8 @@ public class SistemaTiendaOnline {
 	
 	public void agregarProducto(Producto producto) {
 		
+		productos.put(producto.getCodigo(), producto);
+	    catalogo.add(producto);
 	}
 	
 	public void eliminarProducto(Integer codigo) {

@@ -30,6 +30,9 @@ public abstract class Producto implements Comparable<Producto> {
 	}
 
 // GETTER AND SETTER
+	public Integer getCodigo() {
+		return codigo;
+	}
 
 // toString
 	@Override
@@ -38,6 +41,7 @@ public abstract class Producto implements Comparable<Producto> {
 				+ precio + "]";
 	}
 // HASH CODE Y EQUALS
+
 
 	@Override
 	public int hashCode() {
@@ -61,5 +65,6 @@ public abstract class Producto implements Comparable<Producto> {
 	public int compareTo(Producto otro) {
 		return this.codigo.compareTo(otro.codigo);
 	}
+
 
 }

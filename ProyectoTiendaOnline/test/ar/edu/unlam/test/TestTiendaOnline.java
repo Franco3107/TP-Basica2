@@ -10,6 +10,7 @@ import ar.edu.unlam.dominio.Alimento;
 import ar.edu.unlam.dominio.Electronico;
 import ar.edu.unlam.dominio.Producto;
 import ar.edu.unlam.dominio.Ropa;
+import ar.edu.unlam.dominio.SistemaTiendaOnline;
 import ar.edu.unlam.enums.TipoAlimento;
 import ar.edu.unlam.enums.TipoElectronico;
 import ar.edu.unlam.enums.TipoRopa;
@@ -41,15 +42,22 @@ public class TestTiendaOnline {
 	}
 	@Test 
 	public void dadoQueExisteUnProductoAgregarStock() {
-		
+		//ggf
 	}
 	@Test
 	public void dadoQueExisteUnAlimentoComprobarQueEstaVencido() {
-		
+		//hdfh
 	}
 	
 	@Test
 	public void dadoQueExisteUnProductoEliminarloDelCatalogo() {
+		SistemaTiendaOnline sis1 = new SistemaTiendaOnline();
+		Ropa r1 = new Ropa("marca", 20 , 10000.0,"ROJO" , "Material", 4, TipoRopa.BUZO);
+		Alimento a1 = new Alimento("Marca", 10, 100.0, TipoAlimento.ARROZ, LocalDate.of(2026, 10, 10), 2);
+		Electronico e1 = new Electronico("Fravega",10, 5000.0,TipoElectronico.AIRE_ACONDICIONADO, "A348F",12);
+		sis1.agregarProducto(r1);
+		
+	    
 		
 	}
 	
@@ -57,11 +65,10 @@ public class TestTiendaOnline {
 	// CLIENTE
 	@Test
 	public void crearClienteCorrectamente() {
-		
+		//s
 	}
 	@Test
 	public void DadoQueExisteUnClienteAsignarleUnCarritoCorrectamente() {
-		
 	}
 	
 	// CARRITO DE COMPRAS
@@ -79,7 +86,7 @@ public class TestTiendaOnline {
 	}
 	@Test
 	public void dadoQueExisteUnCarritoCalcularElPrecioTotal() {
-		
+		//FFd
 	}
 	public void dadoQueExisteUnCarritoObtenerLosProductoQueEstenDentro() {
 		
@@ -88,11 +95,11 @@ public class TestTiendaOnline {
 	// TIENDA ONLINE
 	@Test
 	public void dadoQueExisteUnaTiendaAgregarUnCliente() {
-		
+		//d
 	}
 	@Test
 	public void dadoQueExistenClientesObtenerlosOrdenadosPorNombreAscendente() {
-		
+		//7
 	}
 	@Test 
 	public void dadoQueExisteUnaTiendaAgregarUnProducto() {
@@ -100,7 +107,7 @@ public class TestTiendaOnline {
 	}
 	@Test
 	public void dadoQueExisteUnaTiendaBuscarUnProductoPorSuCodigoCorrectamente() {
-		
+		//f
 	}
 	@Test
 	public void dadoQueExistenUnaTiendaObtenerProductosOrdenadosPorMarcaAscendente() {
@@ -113,15 +120,15 @@ public class TestTiendaOnline {
 
 	@Test (expected = ProductoNoEncontradoException.class)
 	public void dadoQueExisteUnaTiendaBuscarUnProductoPorSuCodigoYQueLanceUnaExcepcion() {
-		
+		//H
 	}
 	@Test
 	public void dadoQueExisteUnaTiendaObtenerElCatalogoCompleto() {
-		
+		//gf
 	}
 	@Test
 	public void dadoQueExisteUnaTiendaRealizarUnaCompraCorrectamente() {
-		
+		//Hhg
 	}
 	@Test
 	public void dadoQueExisteUnaTiendaVerificarCantidadDeClientes() {
@@ -137,7 +144,7 @@ public class TestTiendaOnline {
 	}
 	@Test (expected = SaldoInsuficienteException.class) 
 	public void dadoQueExisteUnaTiendaYUnClienteRealizarUnaCompraConDineroInsuficienteYLanzarUnaException() {
-		
+	
 	}
 	
 	
