@@ -158,8 +158,14 @@ public class TestTiendaOnline {
 		
 	}
 	@Test
-	public void dadoQueExisteUnaTiendaBuscarUnProductoPorSuCodigoCorrectamente() {
+	public void dadoQueExisteUnaTiendaBuscarUnProductoPorSuCodigoCorrectamente() throws ProductoNoEncontradoException {
+		SistemaTiendaOnline sistema = new SistemaTiendaOnline();
+		Producto productoA = new Alimento("Matarazzo", 50, 75.0, TipoAlimento.PASTA, LocalDate.of(2028, 04, 18), 500);
 		
+		sistema.agregarProducto(productoA);
+		
+		Producto productoBuscado = sistema.buscarProductoPorCodigo(productoA.getCodigo());
+		assertEquals(productoA, productoBuscado);
 	}
 	@Test
 	public void dadoQueExistenUnaTiendaObtenerProductosOrdenadosPorMarcaAscendente() {
@@ -171,8 +177,14 @@ public class TestTiendaOnline {
 	}
 
 	@Test (expected = ProductoNoEncontradoException.class)
-	public void dadoQueExisteUnaTiendaBuscarUnProductoPorSuCodigoYQueLanceUnaExcepcion() {
+	public void dadoQueExisteUnaTiendaBuscarUnProductoPorSuCodigoYQueLanceUnaExcepcion() throws ProductoNoEncontradoException  {
+		SistemaTiendaOnline sistema = new SistemaTiendaOnline();
+		Producto productoR = new Ropa("Levis", 6, 200.0, "AZUL","LANA" , 14, TipoRopa.REMERA);
 		
+		sistema.agregarProducto(productoR);
+		
+		Producto productoBuscado = sistema.buscarProductoPorCodigo(3);
+		assertEquals(productoR, productoBuscado);
 	}
 	@Test
 	public void dadoQueExisteUnaTiendaObtenerElCatalogoCompleto() {
