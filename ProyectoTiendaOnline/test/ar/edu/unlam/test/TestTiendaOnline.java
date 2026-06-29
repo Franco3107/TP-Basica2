@@ -3,13 +3,17 @@ package ar.edu.unlam.test;
 import static org.junit.Assert.*;
 
 import java.time.LocalDate;
+import java.util.TreeSet;
 
 import org.junit.Test;
 
 import ar.edu.unlam.dominio.Alimento;
+import ar.edu.unlam.dominio.CarritoDeCompras;
+import ar.edu.unlam.dominio.Cliente;
 import ar.edu.unlam.dominio.Electronico;
 import ar.edu.unlam.dominio.Producto;
 import ar.edu.unlam.dominio.Ropa;
+import ar.edu.unlam.dominio.SistemaTiendaOnline;
 import ar.edu.unlam.enums.TipoAlimento;
 import ar.edu.unlam.enums.TipoElectronico;
 import ar.edu.unlam.enums.TipoRopa;
@@ -49,7 +53,20 @@ public class TestTiendaOnline {
 	}
 	
 	@Test
-	public void dadoQueExisteUnProductoEliminarloDelCatalogo() {
+	public void dadoQueExisteUnProductoEliminarloDelCatalogo() throws ProductoNoEncontradoException {
+		SistemaTiendaOnline sistema = new SistemaTiendaOnline();
+		Producto productoE = new Electronico("Samsung", 5, 700.0, TipoElectronico.TELEVISOR, "Smart TV", 12);
+		
+		sistema.agregarProducto(productoE);
+		
+		TreeSet<Producto> productos = sistema.obtenerCatalogoCompleto();
+		
+		assertEquals(1, productos.size());
+		
+		sistema.eliminarProducto(productoE.getCodigo());
+		
+		productos = sistema.obtenerCatalogoCompleto();
+		assertEquals(0, productos.size());
 		
 	}
 	
@@ -88,7 +105,13 @@ public class TestTiendaOnline {
 	// TIENDA ONLINE
 	@Test
 	public void dadoQueExisteUnaTiendaAgregarUnCliente() {
+		SistemaTiendaOnline sistema = new SistemaTiendaOnline();
+		CarritoDeCompras carrito = new CarritoDeCompras();
+		Cliente cliente = new Cliente(1, "Pepe", 10000.0, carrito);
 		
+		sistema.agregarCliente(cliente);
+		
+		assertEquals("Pepe", sistema.buscarClientePorCodigo(1).getNombre());
 	}
 	@Test
 	public void dadoQueExistenClientesObtenerlosOrdenadosPorNombreAscendente() {

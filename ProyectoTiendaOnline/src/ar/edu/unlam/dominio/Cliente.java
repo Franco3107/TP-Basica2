@@ -12,6 +12,12 @@ public class Cliente {
 		this.dinero = dinero;
 		this.carrito = carrito;
 	}
+
+	public Integer getCodigoCliente() {
+		return this.codigoCliente;
+	}
 	
-	
+	public String getNombre() {
+		return this.nombre;
+	}
 }
