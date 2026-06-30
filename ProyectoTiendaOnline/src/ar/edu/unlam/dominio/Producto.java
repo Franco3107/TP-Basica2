@@ -33,8 +33,13 @@ public abstract class Producto implements Comparable<Producto> {
 	public Integer getCodigo() {
 		return codigo;
 	}
+	
 
-// toString
+public String getMarca() {
+		return marca;
+	}
+
+	// toString
 	@Override
 	public String toString() {
 		return "Producto [codigo=" + codigo + ", marca=" + marca + ", cantidadDeStock=" + cantidadDeStock + ", precio="

@@ -58,7 +58,10 @@ public class SistemaTiendaOnline {
 	}
 	
 	public TreeSet<Producto> obtenerProductosOrdenadosPorMarcaAscendente() {
-		return null;
+		
+		TreeSet<Producto> productosOrdPorMarcaAsc = new TreeSet<>(new OrdenMarcaAsc());
+		productosOrdPorMarcaAsc.addAll(productos.values());
+		return productosOrdPorMarcaAsc;
 	
 	}
 	

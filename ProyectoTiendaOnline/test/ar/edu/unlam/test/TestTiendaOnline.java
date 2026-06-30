@@ -21,6 +21,7 @@ import ar.edu.unlam.excepciones.CarritoSinProductosException;
 import ar.edu.unlam.excepciones.ProductoNoEncontradoException;
 import ar.edu.unlam.excepciones.SaldoInsuficienteException;
 import ar.edu.unlam.excepciones.StockInsuficienteException;
+import sun.java2d.loops.DrawGlyphListAA;
 
 public class TestTiendaOnline {
 
@@ -221,6 +222,24 @@ public class TestTiendaOnline {
 	}
 	@Test
 	public void dadoQueExistenUnaTiendaObtenerProductosOrdenadosPorMarcaAscendente() {
+		SistemaTiendaOnline sistema = new SistemaTiendaOnline();
+		Producto p1 = new Electronico("Samsung", 5, 700.0, TipoElectronico.TELEVISOR, "Smart TV", 12);
+		Producto p2 = new Electronico("Samsung2", 5, 700.0, TipoElectronico.TELEVISOR, "Smart TV2", 12);
+		Producto p3 = new Electronico("Aamsung3", 5, 700.0, TipoElectronico.TELEVISOR, "Smart TV3", 12);
+		Producto p4 = new Electronico("Samsung4", 5, 700.0, TipoElectronico.TELEVISOR, "Smart TV4", 12);
+		Producto p5 = new Electronico("Zamsung5", 5, 700.0, TipoElectronico.TELEVISOR, "Smart TV5", 12);
+		Producto p6 = new Electronico("Samsung6", 5, 700.0, TipoElectronico.TELEVISOR, "Smart TV6", 12);
+		sistema.agregarProducto(p1);  //0
+		sistema.agregarProducto(p2);  
+		sistema.agregarProducto(p3);
+		sistema.agregarProducto(p4);
+		sistema.agregarProducto(p5);
+		sistema.agregarProducto(p6);  // 5
+		
+		TreeSet<Producto> listaOrdenada = sistema.obtenerProductosOrdenadosPorMarcaAscendente();
+		
+		assertEquals(p3, listaOrdenada.first());
+		assertEquals(p5, listaOrdenada.last());
 		
 	}	
 	@Test
