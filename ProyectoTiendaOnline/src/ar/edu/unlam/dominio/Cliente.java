@@ -10,7 +10,7 @@ public class Cliente implements Comparable<Cliente>{
 		this.codigoCliente = codigoCliente;
 		this.nombre = nombre;
 		this.dinero = dinero;
-		this.carrito = null;
+		this.carrito = carrito;
 	}
 
 	public Integer getCodigoCliente() {
@@ -20,6 +20,19 @@ public class Cliente implements Comparable<Cliente>{
 	public String getNombre() {
 		return this.nombre;
 	}
+	
+	public CarritoDeCompras getCarrito() {
+	    return carrito;
+	}
+
+	public Double getDinero() {
+	    return dinero;
+	}
+
+	public void setDinero(Double dinero) {
+	    this.dinero = dinero;
+	}
+	
 	@Override
 	public int compareTo(Cliente otro) {
 		return this.codigoCliente.compareTo(otro.codigoCliente);

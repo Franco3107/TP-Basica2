@@ -20,8 +20,7 @@ public class Ropa extends Producto implements Descontable {
 
 	@Override
 	public Double aplicarDescuento() {
-		// TODO Auto-generated method stub
-		return null;
+	    return getPrecio() * 0.80;
 	}
 
 	@Override
@@ -29,6 +28,8 @@ public class Ropa extends Producto implements Descontable {
 		// TODO Auto-generated method stub
 		return 0;
 	}
+	
+	
 	
 	
 }
