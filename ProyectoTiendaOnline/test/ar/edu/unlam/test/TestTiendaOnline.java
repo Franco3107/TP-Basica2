@@ -377,8 +377,17 @@ public class TestTiendaOnline {
 	    sistema.realizarCompra(cliente);
 	}
 	@Test (expected = SaldoInsuficienteException.class) 
-	public void dadoQueExisteUnaTiendaYUnClienteRealizarUnaCompraConDineroInsuficienteYLanzarUnaException() {
-	
+	public void dadoQueExisteUnaTiendaYUnClienteRealizarUnaCompraConDineroInsuficienteYLanzarUnaException() throws StockInsuficienteException, SaldoInsuficienteException {
+		SistemaTiendaOnline sistema = new SistemaTiendaOnline();
+	    CarritoDeCompras carrito = new CarritoDeCompras();
+	    Cliente cliente = new Cliente(1, "Santi", 500.0, carrito);
+	    Producto producto = new Electronico("Samsung", 5, 1000.0, TipoElectronico.TELEVISOR, "Smart TV", 12);
+
+	    sistema.agregarCliente(cliente);
+	    sistema.agregarProducto(producto);
+	    carrito.agregarProducto(producto, 2);
+
+	    sistema.realizarCompra(cliente);
 	}
 	
 	
