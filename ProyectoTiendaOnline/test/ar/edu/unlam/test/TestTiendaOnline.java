@@ -45,11 +45,19 @@ public class TestTiendaOnline {
 	}
 	@Test 
 	public void dadoQueExisteUnProductoAgregarStock() {
-		//ggf
+	    Producto producto = new Electronico("Samsung", 0, 700.0, TipoElectronico.TELEVISOR, "Smart TV", 12);
+	    assertFalse(producto.hayStock());
+
+	    producto.agregarStock();
+
+	    assertTrue(producto.hayStock());
 	}
+
 	@Test
 	public void dadoQueExisteUnAlimentoComprobarQueEstaVencido() {
-		//hdfh
+	    Alimento alimento = new Alimento("Marca", 10, 100.0, TipoAlimento.CARNE, LocalDate.of(2020, 1, 1), 2);
+
+	    assertTrue(alimento.estaVencido());
 	}
 	
 	@Test
@@ -139,7 +147,16 @@ public class TestTiendaOnline {
 	}
 	@Test
 	public void dadoQueExisteUnCarritoCalcularElPrecioTotal() {
-		//FFd
+	    CarritoDeCompras carrito = new CarritoDeCompras();
+	    Producto p1 = new Electronico("Samsung", 5, 1000.0, TipoElectronico.TELEVISOR, "Smart TV", 12);
+	    Producto p2 = new Ropa("Nike", 10, 500.0, "Negro", "Algodon", 42, TipoRopa.REMERA);
+
+	    carrito.agregarProducto(p1, 2);
+	    carrito.agregarProducto(p2, 1);
+
+	    Double total = carrito.calcularTotal();
+
+	    assertEquals(2500.0, total, 0.01);
 	}
 	@Test
 	public void dadoQueExisteUnCarritoObtenerLosProductoQueEstenDentro() {
@@ -305,8 +322,19 @@ public class TestTiendaOnline {
 	    assertEquals(2, catalogo.size());
 	}
 	@Test
-	public void dadoQueExisteUnaTiendaRealizarUnaCompraCorrectamente() {
-		//Hhg
+	public void dadoQueExisteUnaTiendaRealizarUnaCompraCorrectamente() throws StockInsuficienteException, SaldoInsuficienteException {
+	    SistemaTiendaOnline sistema = new SistemaTiendaOnline();
+	    CarritoDeCompras carrito = new CarritoDeCompras();
+	    Cliente cliente = new Cliente(1, "Santi", 10000.0, carrito);
+	    Producto producto = new Electronico("Samsung", 5, 1000.0, TipoElectronico.TELEVISOR, "Smart TV", 12);
+
+	    sistema.agregarCliente(cliente);
+	    sistema.agregarProducto(producto);
+	    carrito.agregarProducto(producto, 2);
+
+	    sistema.realizarCompra(cliente);
+
+	    assertEquals(8000.0, cliente.getDinero(), 0.01);
 	}
 	@Test
 	public void dadoQueExisteUnaTiendaVerificarCantidadDeClientes() {
