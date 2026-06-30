@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+import ar.edu.unlam.excepciones.CarritoSinProductosException;
+
 public class CarritoDeCompras {
 	private static Integer contadorCarrito =0;
 	
@@ -15,10 +17,18 @@ public class CarritoDeCompras {
 		this.productos = new HashMap<>();
 	}
 	
-	public void agregarProducto() {
+	public void agregarProducto(Producto producto, Integer cantidadDeUnidades) {
+		this.productos.put(producto, cantidadDeUnidades);
+		
+		//Se podria mejorar, ya al agregar dos veces el mismo producto se sobreescriben
+		// y no se suma la cantidad de unidades
 		
 	}
-	public void sacarProducto() {
+	public void sacarProducto(Producto producto) throws CarritoSinProductosException {
+		if (this.productos.isEmpty()) {
+			throw new CarritoSinProductosException("El carrito No tiene Productos");
+		}
+		this.productos.remove(producto);
 		
 	}
 	public void calcularTotal() {
@@ -27,9 +37,15 @@ public class CarritoDeCompras {
 	public void vaciarCarrito() {
 		
 	}
-	
-	public ArrayList<Producto> obtenerProductos() {
-	    return null;
+	public ArrayList<Producto> obtenerUnaListaDeProductosDentroDelCarrito() {
+		ArrayList<Producto> lista = new ArrayList<>(this.productos.keySet());
+		return lista; 
 	}
+
+	public Map<Producto, Integer> getProductos() {
+		return productos;
+	}
+	
+	
 	
 }

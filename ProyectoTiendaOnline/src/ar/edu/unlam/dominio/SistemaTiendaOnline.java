@@ -52,7 +52,7 @@ public class SistemaTiendaOnline {
 	public TreeSet<Cliente> obtenerClientesPorNombreAscendente(){
 		
 		TreeSet<Cliente> clientesOrdenNombreAsc = new TreeSet<>(new OrdenNombreClienteAsc());
-		clientesOrdenNombreAsc.addAll(clientes.values());
+		clientesOrdenNombreAsc.addAll(clientes.values());  	
 		
 		return clientesOrdenNombreAsc;
 	}

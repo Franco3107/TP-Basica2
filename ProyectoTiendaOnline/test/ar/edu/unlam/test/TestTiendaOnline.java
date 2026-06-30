@@ -45,60 +45,112 @@ public class TestTiendaOnline {
 	}
 	@Test 
 	public void dadoQueExisteUnProductoAgregarStock() {
-		
+		//ggf
 	}
 	@Test
 	public void dadoQueExisteUnAlimentoComprobarQueEstaVencido() {
-		
+		//hdfh
 	}
 	
 	@Test
+	public void dadoQueExisteUnProductoAgregarloAlCatalogo(){
+		SistemaTiendaOnline sistema = new SistemaTiendaOnline();
+		Producto productoE = new Electronico("Samsung", 5, 700.0, TipoElectronico.TELEVISOR, "Smart TV", 12);
+		sistema.agregarProducto(productoE);
+		
+		TreeSet<Producto> catalogoProducto= sistema.obtenerCatalogoCompleto();
+		
+		assertEquals(1, catalogoProducto.size());
+		
+	}
+	@Test	
 	public void dadoQueExisteUnProductoEliminarloDelCatalogo() throws ProductoNoEncontradoException {
 		SistemaTiendaOnline sistema = new SistemaTiendaOnline();
 		Producto productoE = new Electronico("Samsung", 5, 700.0, TipoElectronico.TELEVISOR, "Smart TV", 12);
 		
 		sistema.agregarProducto(productoE);
-		
-		TreeSet<Producto> productos = sistema.obtenerCatalogoCompleto();
-		
-		assertEquals(1, productos.size());
+		TreeSet<Producto> productos= sistema.obtenerCatalogoCompleto();
 		
 		sistema.eliminarProducto(productoE.getCodigo());
 		
 		productos = sistema.obtenerCatalogoCompleto();
 		assertEquals(0, productos.size());
-		
+
 	}
 	
 	
 	// CLIENTE
 	@Test
 	public void crearClienteCorrectamente() {
-		
+		//s
 	}
-	@Test
-	public void DadoQueExisteUnClienteAsignarleUnCarritoCorrectamente() {
-		
-	}
+//	@Test
+//	public void DadoQueExisteUnClienteAsignarleUnCarritoCorrectamente() {
+//		Cliente c1 = new Cliente 
+//		
+//		
+//	}
 	
 	// CARRITO DE COMPRAS
 	@Test 
 	public void agregarProductoAlCarritoCorrectamente() {
+		SistemaTiendaOnline sistema = new SistemaTiendaOnline();
+		CarritoDeCompras carrito = new CarritoDeCompras();
+		Cliente c1 = new Cliente(1,"NOMBRE",20000.0, carrito );
+		Producto p1 = new Electronico("Samsung", 5, 700.0, TipoElectronico.TELEVISOR, "Smart TV", 12);
+		
+		
+		
+		carrito.agregarProducto(p1, 2);
+		
+		assertEquals(1, carrito.getProductos().size() );
 		
 	}
 	@Test
-	public void eliminarProductoDelCarrito() {
+	public void eliminarProductoDelCarrito() throws CarritoSinProductosException {
+		SistemaTiendaOnline sistema = new SistemaTiendaOnline();
+		CarritoDeCompras carrito = new CarritoDeCompras();
+		Cliente c1 = new Cliente(1,"NOMBRE",20000.0, carrito );
+		Producto p1 = new Electronico("Samsung", 5, 700.0, TipoElectronico.TELEVISOR, "Smart TV", 12);
+		Producto p2 = new Electronico("Samsung2", 5, 700.0, TipoElectronico.TELEVISOR, "Smart TV2", 12);
+		Producto p3 = new Electronico("Samsung3", 5, 700.0, TipoElectronico.TELEVISOR, "Smart TV3", 12);
+		
+		carrito.agregarProducto(p1, 4);
+		carrito.agregarProducto(p2, 4);
+		carrito.agregarProducto(p3, 4);
+		carrito.sacarProducto(p2);
+		
+		assertEquals(2, carrito.getProductos().size());
 		
 	}
 	@Test (expected = CarritoSinProductosException.class)
-	public void eliminarProductoDelCarritoYQueTireUnaExcepcionDeCarritoVacio() {
+	public void eliminarProductoDelCarritoYQueTireUnaExcepcionDeCarritoVacio() throws CarritoSinProductosException {
+		SistemaTiendaOnline sistema = new SistemaTiendaOnline();
+		CarritoDeCompras carrito = new CarritoDeCompras();
+		Cliente c1 = new Cliente(1,"NOMBRE",20000.0, carrito );
+		Producto p2 = new Electronico("Samsung2", 5, 700.0, TipoElectronico.TELEVISOR, "Smart TV2", 12);
+
 		
+		carrito.sacarProducto(p2);
 	}
 	@Test
 	public void dadoQueExisteUnCarritoCalcularElPrecioTotal() {
-		
+		//FFd
 	}
+	@Test
 	public void dadoQueExisteUnCarritoObtenerLosProductoQueEstenDentro() {
+		SistemaTiendaOnline sistema = new SistemaTiendaOnline();
+		CarritoDeCompras carrito = new CarritoDeCompras();
+		Cliente c1 = new Cliente(1,"NOMBRE",20000.0, carrito );
+		Producto p1 = new Electronico("Samsung", 5, 700.0, TipoElectronico.TELEVISOR, "Smart TV", 12);
+		Producto p2 = new Electronico("Samsung2", 5, 700.0, TipoElectronico.TELEVISOR, "Smart TV2", 12);
+		Producto p3 = new Electronico("Samsung3", 5, 700.0, TipoElectronico.TELEVISOR, "Smart TV3", 12);
+		
+		carrito.agregarProducto(p1, 4);
+		carrito.agregarProducto(p2, 4);
+		carrito.agregarProducto(p3, 4);
+		
+		assertEquals(3, carrito.obtenerUnaListaDeProductosDentroDelCarrito().size());
 		
 	}
 	
@@ -188,11 +240,11 @@ public class TestTiendaOnline {
 	}
 	@Test
 	public void dadoQueExisteUnaTiendaObtenerElCatalogoCompleto() {
-		
+		//gf
 	}
 	@Test
 	public void dadoQueExisteUnaTiendaRealizarUnaCompraCorrectamente() {
-		
+		//Hhg
 	}
 	@Test
 	public void dadoQueExisteUnaTiendaVerificarCantidadDeClientes() {
@@ -208,7 +260,7 @@ public class TestTiendaOnline {
 	}
 	@Test (expected = SaldoInsuficienteException.class) 
 	public void dadoQueExisteUnaTiendaYUnClienteRealizarUnaCompraConDineroInsuficienteYLanzarUnaException() {
-		
+	
 	}
 	
 	
