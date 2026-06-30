@@ -34,6 +34,10 @@ public abstract class Producto implements Comparable<Producto> {
 		return codigo;
 	}
 	
+	public Double getPrecio() {
+	    return precio;
+	}
+	
 
 public String getMarca() {
 		return marca;

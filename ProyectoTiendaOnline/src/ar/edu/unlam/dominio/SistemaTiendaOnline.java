@@ -5,6 +5,8 @@ import java.util.Map;
 import java.util.TreeSet;
 
 import ar.edu.unlam.excepciones.ProductoNoEncontradoException;
+import ar.edu.unlam.excepciones.SaldoInsuficienteException;
+import ar.edu.unlam.excepciones.StockInsuficienteException;
 
 public class SistemaTiendaOnline {
 	//      MAP <CLAVE , VALOR> 
@@ -45,10 +47,7 @@ public class SistemaTiendaOnline {
 		clientes.put(cliente.getCodigoCliente(), cliente);
 	}
 	
-	public void realizarCompra() {
-		
-	}
-	
+
 	public TreeSet<Cliente> obtenerClientesPorNombreAscendente(){
 		
 		TreeSet<Cliente> clientesOrdenNombreAsc = new TreeSet<>(new OrdenNombreClienteAsc());
@@ -64,11 +63,7 @@ public class SistemaTiendaOnline {
 		return productosOrdPorMarcaAsc;
 	
 	}
-	
-	public TreeSet<Producto> obtenerProductosOrdenadosPorPrecioUnitarioDescendente() {
-		return null;
-	
-	}
+
 	
 	public TreeSet<Producto> obtenerCatalogoCompleto(){
 
@@ -77,6 +72,50 @@ public class SistemaTiendaOnline {
 	
 	public Cliente buscarClientePorCodigo(Integer codigo) {
 	    return clientes.get(codigo);
+	}
+	
+	public Integer obtenerCantidadDeClientes() {
+	    return this.clientes.size();
+	}
+	
+	public TreeSet<Producto> obtenerProductosOrdenadosPorPrecioUnitarioDescendente() {
+
+	    TreeSet<Producto> productosOrdenados = new TreeSet<>(new OrdenPrecioDesc());
+
+	    productosOrdenados.addAll(productos.values());
+
+	    return productosOrdenados;
+	}
+	
+	public void realizarCompra(Cliente cliente)
+	        throws StockInsuficienteException, SaldoInsuficienteException {
+
+	    CarritoDeCompras carrito = cliente.getCarrito();
+
+	    for (Map.Entry<Producto, Integer> item : carrito.getProductos().entrySet()) {
+
+	        Producto producto = item.getKey();
+	        Integer cantidad = item.getValue();
+
+	        for (int i = 0; i < cantidad; i++) {
+
+	            if (!producto.hayStock()) {
+	                throw new StockInsuficienteException("Stock insuficiente");
+	            }
+
+	            producto.quitarStock();
+	        }
+	    }
+
+	    Double total = (Double) carrito.calcularTotal();
+
+	    if (cliente.getDinero() < total) {
+	        throw new SaldoInsuficienteException("Saldo insuficiente");
+	    }
+
+	    cliente.setDinero(cliente.getDinero() - total);
+
+	    carrito.vaciarCarrito();
 	}
 	
 }

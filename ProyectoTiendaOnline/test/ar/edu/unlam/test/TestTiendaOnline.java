@@ -21,7 +21,6 @@ import ar.edu.unlam.excepciones.CarritoSinProductosException;
 import ar.edu.unlam.excepciones.ProductoNoEncontradoException;
 import ar.edu.unlam.excepciones.SaldoInsuficienteException;
 import ar.edu.unlam.excepciones.StockInsuficienteException;
-import sun.java2d.loops.DrawGlyphListAA;
 
 public class TestTiendaOnline {
 
@@ -83,7 +82,11 @@ public class TestTiendaOnline {
 	// CLIENTE
 	@Test
 	public void crearClienteCorrectamente() {
-		//s
+	    CarritoDeCompras carrito = new CarritoDeCompras();
+
+	    Cliente cliente = new Cliente(1, "Santi", 10000.0, carrito);
+
+	    assertNotNull(cliente);
 	}
 //	@Test
 //	public void DadoQueExisteUnClienteAsignarleUnCarritoCorrectamente() {
@@ -206,10 +209,23 @@ public class TestTiendaOnline {
 			i++;
 		}
 	}
-	@Test 
+	@Test
 	public void dadoQueExisteUnaTiendaAgregarUnProducto() {
-		
+	    SistemaTiendaOnline sistema = new SistemaTiendaOnline();
+
+	    Producto producto = new Electronico(
+	            "Samsung",
+	            5,
+	            700.0,
+	            TipoElectronico.TELEVISOR,
+	            "Smart TV",
+	            12);
+
+	    sistema.agregarProducto(producto);
+
+	    assertTrue(sistema.obtenerCatalogoCompleto().contains(producto));
 	}
+	
 	@Test
 	public void dadoQueExisteUnaTiendaBuscarUnProductoPorSuCodigoCorrectamente() throws ProductoNoEncontradoException {
 		SistemaTiendaOnline sistema = new SistemaTiendaOnline();
@@ -245,6 +261,22 @@ public class TestTiendaOnline {
 	@Test
 	public void dadoQueExistenUnaTiendaObtenerProductosOrdenadosPorPrecioUnitarioDescendente() {
 
+	    SistemaTiendaOnline sistema = new SistemaTiendaOnline();
+
+	    Producto p1 = new Electronico("Samsung", 5, 1000.0, TipoElectronico.TELEVISOR, "TV", 12);
+
+	    Producto p2 = new Electronico("LG", 5, 5000.0, TipoElectronico.TELEVISOR, "TV", 12);
+
+	    Producto p3 = new Electronico("Philips", 5, 3000.0,  TipoElectronico.TELEVISOR, "TV", 12);
+
+	    sistema.agregarProducto(p1);
+	    sistema.agregarProducto(p2);
+	    sistema.agregarProducto(p3);
+
+	    TreeSet<Producto> productos = sistema.obtenerProductosOrdenadosPorPrecioUnitarioDescendente();
+
+	    assertEquals(p2, productos.first());
+	    assertEquals(p1, productos.last());
 	}
 
 	@Test (expected = ProductoNoEncontradoException.class)
@@ -259,7 +291,18 @@ public class TestTiendaOnline {
 	}
 	@Test
 	public void dadoQueExisteUnaTiendaObtenerElCatalogoCompleto() {
-		//gf
+	    SistemaTiendaOnline sistema = new SistemaTiendaOnline();
+
+	    Producto p1 = new Electronico("Samsung", 5, 700.0, TipoElectronico.TELEVISOR, "Smart TV", 12);
+
+	    Producto p2 = new Ropa("Nike", 10, 300.0, "Negro", "Algodón", 42, TipoRopa.REMERA);
+
+	    sistema.agregarProducto(p1);
+	    sistema.agregarProducto(p2);
+
+	    TreeSet<Producto> catalogo = sistema.obtenerCatalogoCompleto();
+
+	    assertEquals(2, catalogo.size());
 	}
 	@Test
 	public void dadoQueExisteUnaTiendaRealizarUnaCompraCorrectamente() {
@@ -267,15 +310,43 @@ public class TestTiendaOnline {
 	}
 	@Test
 	public void dadoQueExisteUnaTiendaVerificarCantidadDeClientes() {
-		
+	    SistemaTiendaOnline sistema = new SistemaTiendaOnline();
+
+	    Cliente c1 = new Cliente(1, "Juan", 1000.0, new CarritoDeCompras());
+	    Cliente c2 = new Cliente(2, "Pedro", 2000.0, new CarritoDeCompras());
+
+	    sistema.agregarCliente(c1);
+	    sistema.agregarCliente(c2);
+
+	    assertEquals(Integer.valueOf(2), sistema.obtenerCantidadDeClientes());
 	}
 	@Test
 	public void dadoQueExisteUnaTiendaAplicarElDescuentoCorrespondienteALaRopa() {
-		
+
+	    Ropa ropa = new Ropa( "Nike", 10,1000.0,"Negro","Algodon",42,TipoRopa.REMERA);
+
+	    Double precioConDescuento = ropa.aplicarDescuento();
+
+	    assertEquals(Double.valueOf(800.0), precioConDescuento);
 	}
-	@Test (expected = StockInsuficienteException.class)
-	public void dadoQueExisteUnaTiendaComprarUnProductoSinStockYLanzarExcepcion() {
-		
+	
+	@Test(expected = StockInsuficienteException.class)
+	public void dadoQueExisteUnaTiendaComprarUnProductoSinStockYLanzarExcepcion()
+	        throws StockInsuficienteException, SaldoInsuficienteException {
+
+	    SistemaTiendaOnline sistema = new SistemaTiendaOnline();
+
+	    CarritoDeCompras carrito = new CarritoDeCompras();
+	    Cliente cliente = new Cliente(1, "Santi", 10000.0, carrito);
+
+	    Producto producto = new Electronico("Samsung",0,5000.0,TipoElectronico.TELEVISOR,"Smart TV",12);
+
+	    sistema.agregarCliente(cliente);
+	    sistema.agregarProducto(producto);
+
+	    carrito.agregarProducto(producto, 1);
+
+	    sistema.realizarCompra(cliente);
 	}
 	@Test (expected = SaldoInsuficienteException.class) 
 	public void dadoQueExisteUnaTiendaYUnClienteRealizarUnaCompraConDineroInsuficienteYLanzarUnaException() {

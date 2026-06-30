@@ -31,12 +31,22 @@ public class CarritoDeCompras {
 		this.productos.remove(producto);
 		
 	}
-	public void calcularTotal() {
-		
+	
+	public Double calcularTotal() {
+	    Double total = 0.0;
+
+	    for (Map.Entry<Producto, Integer> item : productos.entrySet()) {
+	        total += item.getKey().getPrecio() * item.getValue();
+	    }
+
+	    return total;
 	}
+	
 	public void vaciarCarrito() {
-		
+	    productos.clear();
 	}
+	
+	
 	public ArrayList<Producto> obtenerUnaListaDeProductosDentroDelCarrito() {
 		ArrayList<Producto> lista = new ArrayList<>(this.productos.keySet());
 		return lista; 
@@ -45,6 +55,8 @@ public class CarritoDeCompras {
 	public Map<Producto, Integer> getProductos() {
 		return productos;
 	}
+	
+	
 	
 	
 	
