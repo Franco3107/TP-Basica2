@@ -22,14 +22,6 @@ public class Ropa extends Producto implements Descontable {
 	public Double aplicarDescuento() {
 	    return getPrecio() * 0.80;
 	}
-
-	@Override
-	public int compareTo(Producto o) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-	
-	
 	
 	
 }

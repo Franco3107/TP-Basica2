@@ -26,18 +26,10 @@ public class Alimento extends Producto implements Caducable{
 		return "Alimento [tipoAlimento=" + tipoAlimento + ", fechaDeVencimiento=" + fechaDeVencimiento
 				+ ", estaVencido=" + estaVencido + ", peso=" + peso + "]";
 	}
-
-
-
+	
 	@Override
 	public Boolean estaVencido() {
-		// TODO Auto-generated method stub
-		return null;
+	    return fechaDeVencimiento.isBefore(LocalDate.now());
 	}
-
-	
-	
-	
-	
 	
 }
